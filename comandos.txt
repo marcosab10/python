@@ -1,0 +1,17 @@
+python --version
+
+-- Para ambiente virtual executando no power shell
+Get-ExecutionPolicy
+Restricted
+
+Set-ExecutionPolicy AllSigned -Force
+
+-- No Terminal do PowerShell
+python -m venv venv  
+.\venv\Scripts\activate
+A
+
+
+
+
+
