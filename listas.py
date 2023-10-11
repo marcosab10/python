@@ -18,20 +18,28 @@ produtos = [
 
 import copy
 
-def porcentagem(lista):
-    for produto in lista:
-        produto["preco"] *= 1.10
+# def porcentagem(lista):
+#     for produto in lista:
+#         produto["preco"] *= 1.10
 
-    return lista
+#     return lista
 
-nova_lista = copy.deepcopy(porcentagem(produtos))
+# nova_lista = copy.deepcopy(porcentagem(produtos))
 
-ordenados_nome = copy.deepcopy(sorted(nova_lista,key=lambda item: item["nome"], reverse=True))
+nova_lista = [
+    {**produto, 'preco':  round(produto["preco"] * 1.1, 2)}
+    for produto in copy.deepcopy(produtos)
+]
 
-ordenados_preco = copy.deepcopy(sorted(nova_lista,key=lambda item: item["preco"]))
+
+ordenados_nome = sorted(copy.deepcopy(nova_lista),key=lambda item: item["nome"], reverse=True)
+
+ordenados_preco = sorted(copy.deepcopy(nova_lista),key=lambda item: item["preco"])
 
 print(*nova_lista, sep="\n")
 print()
 print(*ordenados_nome, sep="\n")
 print()
 print(*ordenados_preco, sep="\n")
+print()
+print(*produtos, sep="\n")
