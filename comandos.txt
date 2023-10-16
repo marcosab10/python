@@ -18,12 +18,23 @@ gcm python
 # Ver o que tem instalado no ambiente
 python -m pip freeze
 
+# Gerar o arquivo do que tem instalado no ambiente
+python -m pip freeze > requirements.txt
+
+# Instalar todas as dependêcias no ambiente virtual
+python -m pip install -r .\requirements.txt
+
 # Instalar biblioteca
 python -m pip install <pacote>
+
+# Atualiza para a ultima versão da biblioteca
+python -m pip install <pacote> --upgrade
 
 # Desinstalar biblioteca
 python -m pip uninstall <pacote>
 
+# Descobrir versoes da biblioteca
+python -m pip index versions <pacote>
 
 
 
