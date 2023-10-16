@@ -1,15 +1,31 @@
 python --version
 
--- Para ambiente virtual executando no power shell
+# Para ambiente virtual executando no power shell
 Get-ExecutionPolicy
 Restricted
 
 Set-ExecutionPolicy AllSigned -Force
 
--- No Terminal do PowerShell
+# No Terminal do PowerShell
 python -m venv venv  
 .\venv\Scripts\activate
 A
+
+-------------------------------------------
+# No windows descobrir qual é o ambiente de python que está sendo usado
+gcm python
+
+# Ver o que tem instalado no ambiente
+python -m pip freeze
+
+# Instalar biblioteca
+python -m pip install <pacote>
+
+# Desinstalar biblioteca
+python -m pip uninstall <pacote>
+
+
+
 
 
 
