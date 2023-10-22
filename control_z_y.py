@@ -10,36 +10,57 @@
 # refazer = todo ['fazer café', 'caminhar']
 
 import os
+import json
 
 todo = []
 todo_removed = []
 
+def salvar_tarefas():
+     with open('tarefas.json', 'w', encoding='utf8') as arquivo:
+        json.dump(
+            todo,
+            arquivo,
+            ensure_ascii=False,
+            indent=2,
+        )
+
 def desfazer(todo, todo_removed):
     if not todo:
+        print()
         print('Nenhuma tarefa para desfazer')
         return
     item = todo.pop()
     todo_removed.append(item)
+    salvar_tarefas()
 
 def adiciona_tarefa(todo, item):
     if not item.strip():
+        print()
         print('Você não adicionou uma tarefa.')
         return
     todo.append(item)
+    salvar_tarefas()
 
 def refazer(todo, todo_removed):
     if not todo_removed:
+        print()
         print('Nenhuma tarefa para refazer')
         return
     item = todo_removed.pop()
     todo.append(item)
-
+    salvar_tarefas()
 
 def imprimir(todo):
     print()
     print('TAREFAS:')
     print(*todo, sep="\n")
     print()
+
+try:
+    with open('tarefas.json', 'r', encoding='utf8') as arquivo:
+        todo = json.load(arquivo)
+except:
+    salvar_tarefas()
 
 while True:
     print('Comandos: listar, desfazer, refazer, sair')
