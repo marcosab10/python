@@ -8,21 +8,31 @@
 # desfazer = [] -> Refazer ['caminhar', 'fazer café']
 # refazer = todo ['fazer café']
 # refazer = todo ['fazer café', 'caminhar']
+
+import os
+
 todo = []
 todo_removed = []
 
 def desfazer(todo, todo_removed):
-    if(len(todo) > 0):
-        item = todo.pop()
-        todo_removed.append(item)
+    if not todo:
+        print('Nenhuma tarefa para desfazer')
+        return
+    item = todo.pop()
+    todo_removed.append(item)
 
 def adiciona_tarefa(todo, item):
+    if not item.strip():
+        print('Você não adicionou uma tarefa.')
+        return
     todo.append(item)
 
 def refazer(todo, todo_removed):
-    if(len(todo_removed) > 0):
-        item = todo_removed.pop()
-        todo.append(item)
+    if not todo_removed:
+        print('Nenhuma tarefa para refazer')
+        return
+    item = todo_removed.pop()
+    todo.append(item)
 
 
 def imprimir(todo):
@@ -43,6 +53,8 @@ while True:
     elif acao == 'refazer':
         refazer(todo, todo_removed)
         imprimir(todo)
+    elif acao == 'clear':
+        os.system('cls')
     elif acao == 'sair':
         break
     else:
