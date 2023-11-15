@@ -17,8 +17,8 @@ for dirname, _, filenames in os.walk(diretorio_dos_arquivos ):
 # You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
 
 # Leitura dos arquivos CSV
-train_data = pd.read_csv(diretorio_dos_arquivos + '\\playground-series-s3e5\\train.csv')
-test_data = pd.read_csv(diretorio_dos_arquivos + '\\playground-series-s3e5\\test.csv')
+train_data = pd.read_csv(diretorio_dos_arquivos + '\\input\\playground-series-s3e5\\train.csv')
+test_data = pd.read_csv(diretorio_dos_arquivos + '\\input\\playground-series-s3e5\\test.csv')
 
 
 # Exibindo as primeiras linhas dos dados de treino (opcional)
