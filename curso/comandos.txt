@@ -36,6 +36,18 @@ python -m pip uninstall <pacote>
 # Descobrir versoes da biblioteca
 python -m pip index versions <pacote>
 
+-----------------------------------------------------------
+# Prepararando ambiente para rodar machine learn
+
+python -m pip  install numpy
+python -m pip  install pandas
+python -m pip install scikit-learn
+python -m pip install matplotlib
+
+
+
+
+
 
 
 

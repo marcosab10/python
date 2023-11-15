@@ -9,7 +9,7 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 # For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
 
 import os
-for dirname, _, filenames in os.walk('/kaggle/input'):
+for dirname, _, filenames in os.walk('/input'):
     for filename in filenames:
         print(os.path.join(dirname, filename))
 
@@ -17,8 +17,8 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
 # You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
 
 # Leitura dos arquivos CSV
-train_data = pd.read_csv('/kaggle/input/playground-series-s3e5/train.csv')
-test_data = pd.read_csv('/kaggle/input/playground-series-s3e5/test.csv')
+train_data = pd.read_csv('/input/playground-series-s3e5/train.csv')
+test_data = pd.read_csv('/input/playground-series-s3e5/test.csv')
 
 
 # Exibindo as primeiras linhas dos dados de treino (opcional)
