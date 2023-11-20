@@ -6,10 +6,16 @@ Restricted
 
 Set-ExecutionPolicy AllSigned -Force
 
-# No Terminal do PowerShell
+# No Terminal do PowerShell criar um novo ambiente virtual
 python -m venv venv  
 .\venv\Scripts\activate
 A
+
+# No powerShell descobrir no python qual ambiente virtual está rodando
+gcm python.exe -Syntax
+
+
+
 
 -------------------------------------------
 # No windows descobrir qual é o ambiente de python que está sendo usado
