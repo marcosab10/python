@@ -14,8 +14,8 @@ A
 # No powerShell descobrir no python qual ambiente virtual está rodando
 gcm python.exe -Syntax
 
-
-
+# No settings.json configurar qual ambiente virtual python está rodando
+"python.defaultInterpreterPath": "C:\\git\\pessoal\\venv\\bin\\python"
 
 -------------------------------------------
 # No windows descobrir qual é o ambiente de python que está sendo usado
