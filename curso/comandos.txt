@@ -50,6 +50,17 @@ python -m pip  install pandas
 python -m pip install scikit-learn
 python -m pip install matplotlib
 
+==============================================================
+Transformar o programa python em um executável do Windows
+
+Instale o PyInstaller:
+pip install pyinstaller
+
+Crie o Executável:
+No mesmo terminal, navegue até o diretório onde está o seu script Python e execute o seguinte comando para criar o executável:
+pyinstaller --onefile --hidden-import keyboard seu_script.py
+
+
 
 
 
