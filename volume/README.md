@@ -33,17 +33,16 @@ python -m venv venv
 
 # Ativar ambiente virtual
 .\venv\Scripts\Activate
+
+OU
+
+source venv/Scripts/activate
+
 ```
 
 ### 2. Instalar dependências
 
 Com o ambiente virtual ativado, instale as bibliotecas necessárias:
-
-```powershell
-pip install keyboard pystray Pillow pyinstaller
-```
-
-Ou use o arquivo requirements.txt:
 
 ```powershell
 pip install -r requirements.txt
