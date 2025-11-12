@@ -106,12 +106,47 @@ python -m PyInstaller cv.spec
 
 O executável será gerado na pasta `dist`.
 
-### 4. Configurar inicialização automática
+### 4. Configurar inicialização automática com privilégios de administrador
 
-Para que o programa seja iniciado automaticamente com o Windows:
+Para que o programa seja iniciado automaticamente com o Windows **como administrador**:
 
-1. Pressione `Win + R` e digite `shell:startup` para abrir a pasta de inicialização
-2. Copie o arquivo `cv.exe` (ou crie um atalho) da pasta `dist` para a pasta de inicialização
+#### Método 1: Usando Agendador de Tarefas (Recomendado)
+
+1. Pressione `Win + R`, digite `taskschd.msc` e pressione Enter
+2. No painel direito, clique em **"Criar Tarefa..."** (não "Criar Tarefa Básica")
+3. Na aba **Geral**:
+   - Nome: `Controle de Volume`
+   - Marque a opção **"Executar com privilégios mais altos"**
+   - Configure para: `Windows 10` ou `Windows 11`
+4. Na aba **Disparadores**:
+   - Clique em **Novo...**
+   - Iniciar a tarefa: `Ao fazer logon`
+   - Marque **"Habilitado"**
+   - Clique em **OK**
+5. Na aba **Ações**:
+   - Clique em **Novo...**
+   - Ação: `Iniciar um programa`
+   - Programa/script: Clique em **Procurar** e selecione `C:\git\python\volume\dist\cv.exe`
+   - Clique em **OK**
+6. Na aba **Condições**:
+   - Desmarque **"Iniciar a tarefa apenas se o computador estiver conectado à energia CA"** (para notebooks)
+7. Na aba **Configurações**:
+   - Marque **"Permitir que a tarefa seja executada sob demanda"**
+   - Marque **"Se a tarefa falhar, reiniciar a cada: 1 minuto"**
+8. Clique em **OK** para salvar
+
+#### Método 2: Usando atalho na pasta de inicialização
+
+1. Navegue até a pasta `dist` onde está o `cv.exe`
+2. Clique com botão direito no `cv.exe` → **Criar atalho**
+3. Clique com botão direito no atalho → **Propriedades**
+4. Clique no botão **Avançado...**
+5. Marque a opção **"Executar como administrador"**
+6. Clique em **OK** e depois em **OK** novamente
+7. Pressione `Win + R`, digite `shell:startup` e pressione Enter
+8. Mova o atalho criado para esta pasta de inicialização
+
+**Nota:** O Método 2 pode exibir uma solicitação UAC a cada inicialização. O Método 1 (Agendador de Tarefas) é mais silencioso e recomendado.
 
 ## Solução de problemas
 
@@ -129,6 +164,28 @@ Se ocorrerem erros de permissão ao compilar o executável:
 1. Encerre todas as instâncias do programa com `taskkill /f /im cv.exe`
 2. Tente compilar novamente
 3. Se persistir, reinicie o computador e tente novamente
+
+### Antivírus bloqueando o executável
+
+Se o Windows Defender ou outro antivírus bloquear o `cv.exe` com erro "Acesso negado" ou deletar o arquivo:
+
+#### Adicionar exceção no Windows Defender:
+
+1. Pressione `Win + I` para abrir Configurações
+2. Vá em **Privacidade e segurança** → **Segurança do Windows**
+3. Clique em **Proteção contra vírus e ameaças**
+4. Clique em **Gerenciar configurações**
+5. Role até **Exclusões** e clique em **Adicionar ou remover exclusões**
+6. Clique em **+ Adicionar uma exclusão** → **Pasta**
+7. Navegue e selecione `C:\git\python\volume\dist`
+
+#### Via PowerShell (como Administrador):
+
+```powershell
+Add-MpPreference -ExclusionPath "C:\git\python\volume\dist"
+```
+
+**Nota:** O executável inclui informações de versão e metadados para reduzir falsos positivos, mas alguns antivírus podem ainda assim bloqueá-lo por ser gerado com PyInstaller.
 
 ## Desenvolvimento
 
